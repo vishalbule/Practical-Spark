@@ -1,0 +1,45 @@
+Step1: Create project 
+-----------------------
+mkdir project1
+cd project1
+mkdir -p scr/main/scala
+sbt
+
+
+Step2:
+-----------------------
+sbt:project1> libraryDependencies
+[info] * org.scala-lang:scala-library:2.12.6
+
+Change the scala version 
+sbt:project1>set scalaVersion := "2.11.8"
+
+sbt:project1>session save 
+
+sbt:project1>reload
+
+Step3: Add dependency
+-----------------------
+set libraryDependencies += "org.apache.spark" % "spark-core_2.11" % "2.3.1"
+session save 
+reload
+
+create spark code  under folder /src/main/scala/Sample.scala
+
+import org.apache.spark._
+object Sample{
+	def main (args:Array[String]){
+		val conf = new SparkConf()
+		conf.set("spark.master","local")
+		conf.set("spark.app.name","sampleApp")
+		val sc=new SparkContext(conf)
+		val rdd1 = sc.range(1,100)
+		rdd1.collect.foreach(println)
+		sc.stop()
+	}
+}
+	
+step 4: 
+sbt:project1> compile
+sbt:project1> package
+sbt:project1> run
