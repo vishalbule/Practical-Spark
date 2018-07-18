@@ -1,0 +1,54 @@
+Step 1: Create Maven project
+-------------------------------
+Create other and maven project
+continue with next option 
+enter Artifact as project name 
+
+Step 2: add scala and spark library 
+----------------------------------
+scala
+right click of project ---> configure ----> add scala nature 
+spark library 
+
+click pom.xml
+
+spark-submit --version
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.3.1
+      /_/
+                        
+Using Scala version 2.11.8,
+
+<!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
+<dependency>
+    <groupId>org.apache.spark</groupId>
+    <artifactId>spark-core_2.11</artifactId>
+    <version>2.3.1</version>
+</dependency>
+
+
+Step 3: change the default java folder structure 
+-----------------------------------------------
+
+right click of project ---> properties ----> java build path --->source---->add folder
+---->create new folder --Next --->add --->(pattern ) **/*.scala
+
+Step 4: Create code 
+-----------------------------------------------
+Create packkage 
+create scala object
+
+step : 5 include spark package automatically 
+-----------------------------------------------
+ctl+shift+ o
+
+Step  : 6 Run project
+-----------------------------------------------
+right click of the project ---> Run as ----> scala application
+
+Step  : 7 Build jar file 
+-----------------------------------------------
+right click of project ---> Run as ----> maven build with three dot 
