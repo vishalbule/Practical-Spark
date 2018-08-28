@@ -28,7 +28,7 @@
 	println ("No. of Partition=" +emp_data_without_header.partitions.size)
 	
 	// Max Salary 	
-	val emp_sal_list=emp_dta_without_header.map(x =>x.split(",")).map(x=>(x(5).toDouble))
+	val emp_sal_list=emp_data_without_header.map(x =>x.split(",")).map(x=>(x(5).toDouble))
 	println("Highest Salary:"+emp_sal_list.max())
 	
 	Here, at first, I have taken only distinct value from the salary. After that sorted
@@ -36,7 +36,7 @@
 	As we were having 2 partitions, if we don’t provide partition 1, then it will sort
 	in each partition.
 	
-	val max_sal = emp_sal_list.distinct.sortBy(x=>xx.toDouble,true,1)
+	val max_sal = emp_sal_list.distinct.sortBy(x=>x.toDouble,true,1)
 			or 
 	val max_sal = emp_sal_list.distinct.sortBy(x=>x,false)
 	println("Highest Salary:"+max_sal.frist)
