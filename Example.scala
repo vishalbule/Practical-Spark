@@ -20,8 +20,8 @@
 --------------------------------------------------------------
 	http://bigdataprogrammers.com/find-max-value-in-spark-rdd-using-scala/
 	val emp_data = sc.textFile("hdfs:///emp_data.txt")
-	val emp_dta_without_header = emp_data.filter(line => line!=emp_header)
-	println ("No. of Partition=" +emp_dta_without_header.partitions.size)
+	val emp_data_without_header = emp_data.filter(line => line!=emp_header)
+	println ("No. of Partition=" +emp_data_without_header.partitions.size)
 	
 	// Max Salary 	
 	val emp_sal_list=emp_dta_without_header.map(x =>x.split(",")).map(x=>(x(5).toDouble))
