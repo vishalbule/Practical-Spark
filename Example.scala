@@ -1,10 +1,10 @@
 ###  1) Word count in file.
 --------------------------------------------------------------
 	val file = sc.textFile("hdfs:///word_count.txt")
-	val words = file.map(w=>w.split("""[\s,.;:!?]+"""))
-	val words = file.map(w=>w.split(" "))
+	val words = file.flatMap(w=>w.split("""[\s,.;:!?]+"""))
+	val words = file.flatMap(w=>w.split(" "))
 	
-	val words_count =word.map(word=>(word,1)).reduceByKey(_+_)
+	val words_count =words.map(word=>(word,1)).reduceByKey(_+_)
 --------------------------------------------------------------
 2)  Most frequently use word in the file. 
 	word_count.sortBy(_._2, false).collect.foreach(println)
