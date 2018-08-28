@@ -12,7 +12,7 @@
 	
 3) Max length of word in the file.
 --------------------------------------------------------------
-	val words_length =word.map(word=>(word,word.length))
+	val words_length =words.map(word=>(word,word.length))
 	words_length.sortBy(_._2, false).first
 	
 	
