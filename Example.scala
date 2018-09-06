@@ -18,6 +18,8 @@
 	
 4)  Find Max Value In Spark Rdd Using Scala
 --------------------------------------------------------------
+	Using RDD 
+	---------------------------------------------------
 	http://bigdataprogrammers.com/find-max-value-in-spark-rdd-using-scala/
 	val emp_data = sc.textFile("hdfs:///emp_data.txt")
 	
@@ -51,6 +53,22 @@
 	val sal_with_empName = emp_dta_without_header.map(x =>x.split(",")).map(x=>(x(5).toDouble,x(1)))
 	val max_Sal_Emp = sal_with_empName.groupByKey.takeOrdered(1)(ordering[Double].reverse.on(x=>x._1))
 	
+	RDD can be conver in DataFrame
+	-------------------------------------------------
+	import org.apache.spark.sql.types.{StructType,StructField,StringType,IntegerType};
+	import org.apache.spark.sql.Row;
+
+	val csv = sc.textFile("/path/to/file.csv")
+	val rows = csv.map(line => line.split(",").map(_.trim))
+	val header = rows.first
+	val data = rows.filter(_(0) != header(0))
+	val rdd = data.map(row => Row(row(0),row(1).toInt))
+
+	val schema = new StructType()
+    	.add(StructField("id", StringType, true))
+    	.add(StructField("val", IntegerType, true))
+
+	val df = sqlContext.createDataFrame(rdd, schema)
 
 5) Write the missing code in the given program to display the expected output to 
    identify animals that have names with four letters. Output: Array((4,lion))
